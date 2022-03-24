@@ -1,0 +1,29 @@
+body{
+    background-color: black;
+    
+}
+#parent{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 1%;
+}
+#parent > div{
+    color: white;
+    text-align: center;
+    margin-left:25%;
+    background-color: grey;
+    border-radius: 5%;
+    border: 5px solid rgb(227, 227, 233);
+}
+#parent > div > div{
+    background-color: rgb(104, 104, 104);
+    border-radius: 5%;
+
+}
+#parent > div > div> img {
+    width: 100%
+}
+#get{
+    margin-right: 20%;
+    margin-bottom: 2%;
+}
