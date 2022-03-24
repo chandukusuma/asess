@@ -15,7 +15,17 @@ fetch('https://api.npoint.io/20c1afef1661881ddc9c')
 .then(function(res){
     console.log("res", res)
     showList(res)
+    searchTeam(res)
+    sortLow(res);
 })
+
+function sortLow(data){
+    data.playerList.forEach(function(player){
+        player.Value.sort(function(a, b){
+            return a-b
+        })
+    })
+}
 
 var container = document.getElementById("parent");
 
@@ -43,18 +53,36 @@ function showList(data){
         div1.append(img, fullname, skills, value, upcomingMatch);
         div.append(div1);
         container.append(div)
+
         
-    })
-    sortLow()
-}
-
-function sortLow(res){
-
-    res.value.sort(function(a, b){
-        return b-a
+        
     })
     
 }
+
+
+let teams = document.getElementById("get");
+
+function searchTeam(data){
+
+    data.teamsList.forEach(function(team){
+        let query = document.getElementById("query").value;
+
+        if(query === team.webName){
+            let div = document.createElement("div");
+            let teamId = document.createElement("p");
+            teamId.innerText = team.TID;
+
+            let officialName = docuemnt.createElement("p");
+            officialName.innerText = team.officialName
+
+            div.append(teamId, officialName);
+
+            teams.append(div)
+        }
+    })
+}
+
 
 
 
